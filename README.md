@@ -3,6 +3,7 @@
 This project is a console based Rock Paper Scissors game built as part of The Odin Project curriculum.
 
 This is console based! Remember to click F12 and then ESC to access the console before playing!
+https://protokol42.github.io/odin-rock-paper-scissors/
 
 ## Core Concepts Practiced
 
