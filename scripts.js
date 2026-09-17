@@ -1,4 +1,4 @@
-playGame();
+//playGame();
 function getComputerChoice() {
   const randomized = Math.random();
   if (randomized <= 0.33) return "rock";
@@ -8,6 +8,14 @@ function getComputerChoice() {
 function getHumanChoice() {
   return prompt("Choose rock, paper or scissors!").trim();
 }
+
+let menu = document.querySelector(".menu");
+
+menu.addEventListener("click", (event) => {
+  let target = event.target;
+  let playerSelection = target.id;
+  playRound(playerSelection, getComputerChoice());
+});
 
 function playRound(humanChoice, computerChoice) {
   humanChoice = humanChoice.toLowerCase();
