@@ -10,17 +10,21 @@ function getHumanChoice() {
 }
 
 let menu = document.querySelector(".menu");
+let playerPara = document.querySelector("#player");
+let computerPara = document.querySelector("#computer");
+let announcerPara = document.querySelector("#announcer");
 
 menu.addEventListener("click", (event) => {
   let target = event.target;
+  if (target === menu) return;
   let playerSelection = target.id;
   playRound(playerSelection, getComputerChoice());
 });
 
 function playRound(humanChoice, computerChoice) {
   humanChoice = humanChoice.toLowerCase();
-  console.log(`The Computer chooses ${computerChoice}`);
-  console.log(`The Player chooses ${humanChoice}`);
+  computerPara.textContent = `The Computer chooses ${computerChoice}`;
+  playerPara.textContent = `The Player chooses ${humanChoice}`;
 
   const result = handleRoundWinner(humanChoice, computerChoice);
 
@@ -52,16 +56,16 @@ function handleRoundWinner(humanChoice, computerChoice) {
 function handleRoundAnnouncement(message, humanChoice, computerChoice) {
   switch (message) {
     case "tie":
-      console.log("Tie! Nobody wins.");
+      announcerPara.textContent = "Tie! Nobody wins.";
       break;
     case "computerWin":
-      console.log(`The Computer wins! ${computerChoice} beats ${humanChoice}!`);
+      announcerPara.textContent = `The Computer wins! ${computerChoice} beats ${humanChoice}!`;
       break;
     case "playerWin":
-      console.log(`The Player wins! ${humanChoice} beats ${computerChoice}!`);
+      announcerPara.textContent = `The Player wins! ${humanChoice} beats ${computerChoice}!`;
       break;
     default:
-      console.log("Invalid end message.");
+      announcerPara.textContent = "Invalid end message.";
       break;
   }
 }
