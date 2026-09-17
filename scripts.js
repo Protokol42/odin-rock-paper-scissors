@@ -18,6 +18,7 @@ function getComputerChoice() {
   if (randomized <= 0.33) return "rock";
   return randomized > 0.66 ? "scissors" : "paper";
 }
+
 menu.addEventListener("click", (event) => {
   let target = event.target;
   if (target === menu) return;
@@ -86,11 +87,11 @@ function keepScore(roundResult) {
 
   if (gameState.computerScore === 5) {
     announcerPara.textContent =
-      "The computer wins! It is the first to 5 points.";
+      "The Computer wins! It is the first to 5 points.";
     toggleGameState();
   } else if (gameState.playerScore === 5) {
     announcerPara.textContent =
-      "The player wins! They are the first to 5 points.";
+      "The Player wins! They are the first to 5 points.";
     toggleGameState();
   }
 }
@@ -98,7 +99,7 @@ function keepScore(roundResult) {
 function roundStatusDisplayUpdate() {
   roundNumberPara.textContent = `The current round number: ${gameState.roundNumber}`;
   computerScorePara.textContent = `The Computer has ${gameState.computerScore} points`;
-  playerScorePara.textContent = `The player has ${gameState.playerScore} points`;
+  playerScorePara.textContent = `The Player has ${gameState.playerScore} points`;
 }
 
 // Does not take empty strings.

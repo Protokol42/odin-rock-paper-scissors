@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #2655ad;
+}
+
+.header {
+  background-color: #c2c94b;
+  text-align: center;
+  color: #e34343;
+  padding: 25px;
+  font-family: "Fanwood Text", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-optical-sizing: auto;
+  -webkit-text-stroke: 0.1px black;
+}
+
+.menu button {
+  border: 3.25px solid #18adcb;
+  background-color: #06e399;
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  border-radius: 50%;
+}
+
+#rock {
+  background-image: url("svgs/rock.svg");
+}
+
+#paper {
+  background-image: url("svgs/paper.svg");
+}
+
+#scissors {
+  background-image: url("svgs/scissors.svg");
+}
