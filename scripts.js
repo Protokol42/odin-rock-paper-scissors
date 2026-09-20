@@ -1,7 +1,7 @@
 const menu = document.querySelector(".menu");
-const gameButtons = menu.querySelectorAll("button");
-const playerPara = document.querySelector("#player");
-const computerPara = document.querySelector("#computer");
+const gameButtons = menu.querySelectorAll(".gameButtons button");
+const playerChoiceIcon = document.querySelector(".playerChoiceIcon img");
+const computerChoiceIcon = document.querySelector(".computerChoiceIcon img");
 const announcerPara = document.querySelector("#announcer");
 const playerScorePara = document.querySelector("#playerScore");
 const computerScorePara = document.querySelector("#computerScore");
@@ -13,6 +13,19 @@ const gameState = {
   computerScore: 0,
 };
 
+function resetGameState() {
+  gameState.roundNumber = 0;
+  gameState.playerScore = 0;
+  gameState.computerScore = 0;
+  playerScorePara.textContent = 0;
+  computerScorePara.textContent = 0;
+  roundNumberPara.textContent = "Round #";
+  announcerPara.textContent = "";
+  playerChoiceIcon.src = "";
+  computerChoiceIcon.src = "";
+  toggleGameButtonsDisabled(false);
+}
+
 function getComputerChoice() {
   const randomized = Math.random();
   if (randomized <= 0.33) return "rock";
@@ -22,28 +35,46 @@ function getComputerChoice() {
 menu.addEventListener("click", (event) => {
   let target = event.target;
   if (target === menu) return;
+  if (target.id === "reset") {
+    resetGameState();
+    return;
+  }
   let playerSelection = target.id;
   keepScore(playRound(playerSelection, getComputerChoice()));
   roundStatusDisplayUpdate();
 });
 
-function playRound(humanChoice, computerChoice) {
-  humanChoice = humanChoice.toLowerCase();
-  computerPara.textContent = `The Computer chooses ${computerChoice}`;
-  playerPara.textContent = `The Player chooses ${humanChoice}`;
+function playRound(playerChoice, computerChoice) {
+  playerChoice = playerChoice.toLowerCase();
+  handleIconSwap(playerChoiceIcon, playerChoice);
+  handleIconSwap(computerChoiceIcon, computerChoice);
 
-  const result = handleRoundWinner(humanChoice, computerChoice);
+  const result = handleRoundWinner(playerChoice, computerChoice);
 
-  humanChoice = capitalizeFirstLetter(humanChoice);
+  playerChoice = capitalizeFirstLetter(playerChoice);
   computerChoice = capitalizeFirstLetter(computerChoice);
-  handleRoundAnnouncement(result, humanChoice, computerChoice);
+  handleRoundAnnouncement(result, playerChoice, computerChoice);
   return result;
 }
-
-function handleRoundWinner(humanChoice, computerChoice) {
-  if (humanChoice === computerChoice) return "tie";
+function handleIconSwap(target, choice) {
+  switch (choice) {
+    case "rock":
+      target.src = "svgs/rock.svg";
+      break;
+    case "paper":
+      target.src = "svgs/paper.svg";
+      break;
+    case "scissors":
+      target.src = "svgs/scissors.svg";
+      break;
+    default:
+      return "Invalid icon choice.";
+  }
+}
+function handleRoundWinner(playerChoice, computerChoice) {
+  if (playerChoice === computerChoice) return "tie";
   let result;
-  switch (humanChoice) {
+  switch (playerChoice) {
     case "rock":
       result = computerChoice === "paper" ? "computerWin" : "playerWin";
       break;
@@ -59,25 +90,26 @@ function handleRoundWinner(humanChoice, computerChoice) {
   return result;
 }
 
-function handleRoundAnnouncement(message, humanChoice, computerChoice) {
+function handleRoundAnnouncement(message, playerChoice, computerChoice) {
   switch (message) {
     case "tie":
       announcerPara.textContent = "Tie! Nobody wins.";
       break;
     case "computerWin":
-      announcerPara.textContent = `The Computer wins! ${computerChoice} beats ${humanChoice}!`;
+      announcerPara.textContent = `The Computer wins! ${computerChoice} beats ${playerChoice}!`;
       break;
     case "playerWin":
-      announcerPara.textContent = `The Player wins! ${humanChoice} beats ${computerChoice}!`;
+      announcerPara.textContent = `The Player wins! ${playerChoice} beats ${computerChoice}!`;
       break;
     default:
       announcerPara.textContent = "Invalid end message.";
       break;
   }
 }
-function toggleGameState() {
+
+function toggleGameButtonsDisabled(state) {
   gameButtons.forEach((button) => {
-    button.disabled = !button.disabled;
+    button.disabled = state;
   });
 }
 function keepScore(roundResult) {
@@ -88,18 +120,18 @@ function keepScore(roundResult) {
   if (gameState.computerScore === 5) {
     announcerPara.textContent =
       "The Computer wins! It is the first to 5 points.";
-    toggleGameState();
+    toggleGameButtonsDisabled(true);
   } else if (gameState.playerScore === 5) {
     announcerPara.textContent =
       "The Player wins! They are the first to 5 points.";
-    toggleGameState();
+    toggleGameButtonsDisabled(true);
   }
 }
 
 function roundStatusDisplayUpdate() {
-  roundNumberPara.textContent = `The current round number: ${gameState.roundNumber}`;
-  computerScorePara.textContent = `The Computer has ${gameState.computerScore} points`;
-  playerScorePara.textContent = `The Player has ${gameState.playerScore} points`;
+  roundNumberPara.textContent = `Round #${gameState.roundNumber}`;
+  computerScorePara.textContent = gameState.computerScore;
+  playerScorePara.textContent = gameState.playerScore;
 }
 
 // Does not take empty strings.

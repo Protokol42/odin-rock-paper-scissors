@@ -2,35 +2,93 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 300;
 }
 
 body {
-  background-color: #2655ad;
+  background-color: #08265e;
 }
 
 .header {
-  background-color: #c2c94b;
+  background-color: #dcc80d;
   text-align: center;
-  color: #e34343;
+  color: #08265e;
   padding: 25px;
-  font-family: "Fanwood Text", serif;
-  font-weight: 400;
   font-style: normal;
   font-optical-sizing: auto;
-  -webkit-text-stroke: 0.1px black;
 }
 
+.gameState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 32px;
+  text-align: center;
+  font-size: 8px;
+  font-style: normal;
+  line-height: 1.5;
+  color: aliceblue;
+}
+
+.gameStateDisplay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+}
+
+.score,
+.name {
+  padding: 24px 0;
+}
+
+.playerChoiceIcon,
+.computerChoiceIcon {
+  width: 380px;
+  height: 380px;
+  border: 4px solid #18adcb;
+  background-color: #0992a2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.playerChoiceIcon img,
+.computerChoiceIcon img {
+  width: 250px;
+  height: auto;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.menu .gameButtons {
+  display: flex;
+  gap: 28px;
+}
+.menu .gameButtons button {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
 .menu button {
   border: 3.25px solid #18adcb;
-  background-color: #06e399;
-  width: 50px;
-  height: 50px;
+  background-color: #0992a2;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 80%;
-  border-radius: 50%;
 }
-
+#reset {
+  width: 50px;
+  height: 50px;
+  border-radius: 30%;
+  background-image: url("svgs/reset.svg");
+}
 #rock {
   background-image: url("svgs/rock.svg");
 }

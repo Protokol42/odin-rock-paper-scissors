@@ -9,40 +9,39 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fanwood+Text:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fanwood+Text:ital@0;1&family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
     <div class="header"><h1>ROCK PAPER SCISSORS</h1></div>
     <div class="gameState">
-      <h2 class="roundNumber">round number</h2>
+      <h1 id="roundNumber">Round #</h1>
       <div class="gameStateDisplay">
         <div class="playerChoice">
-          <img src="/svgs/rock.svg" alt="Player" />
+          <h1 class="name">Player</h1>
+          <div class="playerChoiceIcon">
+            <img />
+          </div>
+          <h1 id="playerScore" class="score">0</h1>
         </div>
-        <h2 class="winner">Winner</h2>
+        <h1 id="announcer"></h1>
         <div class="computerChoice">
-          <img src="/svgs/paper.svg" alt="Computer" />
-        </div>
-        <div class="scoreTracker">
-          <h2 class="playerScore">Player's Score:</h2>
-          <h2 class="computerScore">Computer's Score:</h2>
+          <h1 class="name">Computer</h1>
+          <div class="computerChoiceIcon">
+            <img />
+          </div>
+          <h1 id="computerScore" class="score">0</h1>
         </div>
       </div>
     </div>
     <div class="menu">
-      <button id="rock" aria-label="Rock"></button>
-      <button id="paper" aria-label="Paper"></button>
-      <button id="scissors" aria-label="Scissors"></button>
-    </div>
-    <div class="results">
-      <p id="player"></p>
-      <p id="computer"></p>
-      <p id="announcer"></p>
-      <p id="playerScore"></p>
-      <p id="computerScore"></p>
-      <p id="roundNumber"></p>
+      <div class="gameButtons">
+        <button id="rock" aria-label="Rock"></button>
+        <button id="paper" aria-label="Paper"></button>
+        <button id="scissors" aria-label="Scissors"></button>
+      </div>
+      <button id="reset" aria-label="Reset"></button>
     </div>
   </body>
 </html>
