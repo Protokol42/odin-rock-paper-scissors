@@ -1,8 +1,7 @@
 # odin-rock-paper-scissors
 
-This project is a console based Rock Paper Scissors game built as part of The Odin Project curriculum.
+This project is Rock Paper Scissors game built as part of The Odin Project curriculum.
 
-This is console based! Remember to click F12 and then ESC to access the console before playing!
 https://protokol42.github.io/odin-rock-paper-scissors/
 
 ## Core Concepts Practiced
@@ -15,7 +14,6 @@ https://protokol42.github.io/odin-rock-paper-scissors/
 
 ### Logic and Control Flow
 
-- **Iterative Execution:** Using a `for` loop to ensure the game runs for exactly five rounds before declaring a final winner.
 - **Decision Logic:** Implementing `switch` statements to compare choices and determine the winner of each individual round.
 - **Automated Opponent:** Using `Math.random()` with specific range thresholds to simulate a randomized computer choice.
 
@@ -28,3 +26,4 @@ https://protokol42.github.io/odin-rock-paper-scissors/
 
 - **HTML5:** Providing the basic document structure to load and execute the logic script.
 - **JavaScript:** Powering all game mechanics, randomization, and state management.
+- **CSS:** Styling the UI using flexbox.
